@@ -20,6 +20,7 @@
     COMMON_ENABLE_SPLUNKFORWARDER: False
     ENABLE_LEGACY_ORA: !!null
   roles:
+    - oraclejdk
     - role: nginx
       nginx_sites:
       - certs
@@ -40,12 +41,10 @@
     - edx_notes_api
     - demo
     - { role: 'rabbitmq', rabbitmq_ip: '127.0.0.1' }
-    - oraclejdk
     - elasticsearch
     - forum
     - { role: notifier, NOTIFIER_DIGEST_TASK_INTERVAL: "5" }
     - { role: "xqueue", update_users: True }
-    - xqwatcher
     - role: ora
       when: ENABLE_LEGACY_ORA
     - certs
